@@ -3,17 +3,8 @@ var Youtube = require('youtube-api');
 var Vineapple = require('vineapple');
 var app = express();
 
-Youtube.authenticate({
-  type: "key",
-  key: "AIzaSyBgRwbBIjjisuA7zE0uNbhb1OuA7pGPuNM"
-})
-
-/*
-app.get('/', function(req, res) {
-  res.end('Hello World!');
-})
-*/
-
+app.use(express.static('app'));
+// routes
 app.get('/api/search/youtube', function(req, res) {
   youtubeSearch(
     req.query.q, 
@@ -38,6 +29,12 @@ app.get('/api/search/vine', function(req, res) {
       }
       res.json(result);
     })
+})
+
+// helpers
+Youtube.authenticate({
+  type: "key",
+  key: "AIzaSyBgRwbBIjjisuA7zE0uNbhb1OuA7pGPuNM"
 })
 
 function vineSearch(q, page, callback) {
