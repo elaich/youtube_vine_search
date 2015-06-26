@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.0",
+    "vineapple": "^0.1.5",
     "youtube-api": "^1.0.0"
   }
 }

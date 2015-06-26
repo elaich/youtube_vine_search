@@ -1,5 +1,6 @@
 var express = require('express'); 
 var Youtube = require('youtube-api');
+var Vineapple = require('vineapple');
 var app = express();
 
 Youtube.authenticate({
@@ -26,11 +27,29 @@ app.get('/api/search/youtube', function(req, res) {
   })
 })
 
+app.get('/api/search/vine', function(req, res) {
+  vineSearch(
+    req.query.q,
+    req.query.token,
+    function(err, result) {
+      if (err) {
+        console.log(err);
+        return res.status(500).end();
+      }
+      res.json(result);
+    })
+})
+
+function vineSearch(q, page, callback) {
+  var vine = new Vineapple();
+  vine.tag(q, {page: page, size: 10}, callback);
+}
+
 function youtubeSearch(q, token, callback) {
   Youtube.search.list({
     part: 'id,snippet', 
-    q: 'dogs', 
-    pageToken: '',
+    q: q, 
+    pageToken: token,
     maxResults: 10
   }, callback)
 }
