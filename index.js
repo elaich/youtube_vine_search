@@ -53,4 +53,4 @@ function youtubeSearch(q, token, callback) {
 
 // listening
 var port = process.env.PORT || 9000;
-app.listen(9000);
+app.listen(port);
