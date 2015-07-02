@@ -96,10 +96,15 @@ img {
             <li 
               class="result-item-yb"
               ng-repeat="item in page.youtube.items">
+              <div youtube-item>
+              </div>
               <h4>
                 <i class="fa fa-youtube-play fa-fw"></i>
                 <span class="result-title-yb">{{item.snippet.title}}</span>
               </h4>
+              <div class="player">
+                this is the player
+              </div>
             </li>
             <li class="list-group-item" ng-repeat="item in page.vine.records">
               <div class="left">
