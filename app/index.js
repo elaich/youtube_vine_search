@@ -9,6 +9,7 @@ angular.module('myapp')
     $scope.yb_url = youtubeAPI + $scope.query;
     $http.get($scope.yb_url)
       .success(function(response) {
+        console.log(response);
         $scope.youtubeNextPageToken = response.nextPageToken;
         $scope.pages.push({youtube: response});
       });
@@ -16,7 +17,6 @@ angular.module('myapp')
     $scope.vn_url = vineAPI + $scope.query;
     $http.get($scope.vn_url)
       .success(function(response) {
-        console.log(response);
         $scope.vineNextPage = response.nextPage;
         $scope.pages.push({vine: response});
       });
